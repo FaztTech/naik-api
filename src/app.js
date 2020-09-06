@@ -1,15 +1,17 @@
 import express from "express";
-import mogan from 'morgan'
+import mogan from "morgan";
 
 const app = express();
-import productRoutes from './routes/products.routes'
+import productRoutes from "./routes/products.routes";
 
 // settings
 app.set("port", process.env.PORT || 3000);
 
 // middlewares
-app.use(mogan('dev'))
+app.use(mogan("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.use(productRoutes)
+app.use(productRoutes);
 
-export default app
+export default app;
